@@ -1,9 +1,7 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   ReactFlow,
   Background,
-  Controls,
-  MiniMap,
   useNodesState,
   useEdgesState,
   addEdge,
@@ -21,10 +19,6 @@ const nodeTypes = {
   thoughtNode: ThoughtNode,
 };
 
-interface ThoughtGraphProps {
-  onNodeSelect?: (nodeId: string | null) => void;
-}
-
 const initialNodes: Node[] = [
   {
     id: '1',
@@ -39,7 +33,7 @@ const initialNodes: Node[] = [
 
 const initialEdges: Edge[] = [];
 
-const ThoughtGraph: React.FC<ThoughtGraphProps> = ({ onNodeSelect }) => {
+const ThoughtGraph: React.FC = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [nodeIdCounter, setNodeIdCounter] = useState(2);
@@ -79,14 +73,6 @@ const ThoughtGraph: React.FC<ThoughtGraphProps> = ({ onNodeSelect }) => {
     return newNodeId;
   }, [nodeIdCounter, setNodes]);
 
-  const onNodeClick = useCallback((_: React.MouseEvent, node: Node) => {
-    onNodeSelect?.(node.id);
-  }, [onNodeSelect]);
-
-  const onBackgroundClick = useCallback(() => {
-    onNodeSelect?.(null);
-  }, [onNodeSelect]);
-
   const onPaneContextMenu = useCallback((event: React.MouseEvent) => {
     event.preventDefault();
     
@@ -107,8 +93,6 @@ const ThoughtGraph: React.FC<ThoughtGraphProps> = ({ onNodeSelect }) => {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        onNodeClick={onNodeClick}
-        onPaneClick={onBackgroundClick}
         onPaneContextMenu={onPaneContextMenu}
         nodeTypes={nodeTypes}
         fitView
@@ -129,15 +113,6 @@ const ThoughtGraph: React.FC<ThoughtGraphProps> = ({ onNodeSelect }) => {
           size={1}
           color="hsl(var(--node-border))"
           className="opacity-30"
-        />
-        <Controls 
-          className="bg-card border border-border shadow-lg rounded-lg"
-          showInteractive={false}
-        />
-        <MiniMap 
-          className="bg-card border border-border shadow-lg rounded-lg"
-          nodeColor="hsl(var(--node-active))"
-          maskColor="rgba(255, 255, 255, 0.2)"
         />
       </ReactFlow>
       
