@@ -8,7 +8,11 @@ export interface ThoughtNodeData extends Record<string, unknown> {
   isEditing?: boolean;
 }
 
-const ThoughtNode: React.FC<NodeProps> = ({ data, selected }) => {
+interface ThoughtNodeProps extends NodeProps {
+  onTextChange?: (id: string, text: string) => void;
+}
+
+const ThoughtNode: React.FC<ThoughtNodeProps> = ({ data, selected, onTextChange }) => {
   const nodeData = data as ThoughtNodeData;
   const [isEditing, setIsEditing] = useState(nodeData.isEditing || false);
   const [text, setText] = useState(nodeData.text || '');
@@ -16,8 +20,8 @@ const ThoughtNode: React.FC<NodeProps> = ({ data, selected }) => {
 
   // Calculate node size based on text length
   const getNodeSize = useCallback((textContent: string) => {
-    const baseWidth = 150;
-    const baseHeight = 80;
+    const baseWidth = 100; // reduced from 150
+    const baseHeight = 50; // reduced from 80
     const charCount = textContent.length;
     
     // Dynamic sizing based on content
@@ -26,8 +30,8 @@ const ThoughtNode: React.FC<NodeProps> = ({ data, selected }) => {
     const extraHeight = Math.max(lines - 2, 0) * 20;
     
     return {
-      width: Math.max(baseWidth + extraWidth, 150),
-      height: Math.max(baseHeight + extraHeight, 80)
+      width: Math.max(baseWidth + extraWidth, 100), // min 100
+      height: Math.max(baseHeight + extraHeight, 50) // min 50
     };
   }, []);
 
@@ -46,9 +50,10 @@ const ThoughtNode: React.FC<NodeProps> = ({ data, selected }) => {
 
   const handleTextSubmit = useCallback(() => {
     setIsEditing(false);
-    // Here you would typically update the node data in your state management
-    // For now, we'll just update local state
-  }, []);
+    if (onTextChange && text !== nodeData.text) {
+      onTextChange(nodeData.id, text);
+    }
+  }, [onTextChange, nodeData.id, text, nodeData.text]);
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -66,7 +71,7 @@ const ThoughtNode: React.FC<NodeProps> = ({ data, selected }) => {
         "bg-gradient-node border border-node-border rounded-xl shadow-node transition-all duration-200",
         "hover:shadow-node-hover hover:border-node-active/30",
         selected && "border-node-active shadow-node-hover ring-2 ring-node-active/20",
-        "min-w-[150px] min-h-[80px] p-4 flex items-center justify-center"
+        "min-w-[100px] min-h-[50px] p-4 flex items-center justify-center" // reduced min-w/min-h
       )}
       style={{
         width: nodeSize.width,
@@ -106,7 +111,7 @@ const ThoughtNode: React.FC<NodeProps> = ({ data, selected }) => {
           onBlur={handleTextSubmit}
           onKeyDown={handleKeyDown}
           className="w-full h-full resize-none border-none outline-none bg-transparent text-foreground text-sm placeholder:text-muted-foreground"
-          placeholder="Enter your thought..."
+          placeholder="..."
           style={{
             minHeight: '40px',
           }}
