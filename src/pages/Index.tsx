@@ -1,12 +1,33 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { useState } from 'react';
+import ThoughtGraph from '@/components/ThoughtGraph';
+import ThoughtSidebar from '@/components/ThoughtSidebar';
 
 const Index = () => {
+  const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  const handleNodeSelect = (nodeId: string | null) => {
+    setSelectedNodeId(nodeId);
+  };
+
+  const handleToggleSidebar = () => {
+    setIsSidebarCollapsed(prev => !prev);
+  };
+
+  const handleCreateNode = () => {
+    // This will be implemented to create a new node
+    console.log('Creating new node...');
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="h-screen flex bg-background overflow-hidden">
+      <ThoughtSidebar
+        isCollapsed={isSidebarCollapsed}
+        onToggle={handleToggleSidebar}
+        selectedNodeId={selectedNodeId}
+        onCreateNode={handleCreateNode}
+      />
+      <ThoughtGraph onNodeSelect={handleNodeSelect} />
     </div>
   );
 };
