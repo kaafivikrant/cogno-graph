@@ -19,5 +19,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/cogno-graph/",
+  base: mode === "production" ? "/cogno-graph/" : "/",
 }));
