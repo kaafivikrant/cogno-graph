@@ -86,7 +86,7 @@ const ThoughtGraph: React.FC = () => {
   }, [createNewNode]);
 
   return (
-    <div className="flex-1 relative bg-gradient-canvas">
+    <div className="w-full h-full relative bg-gradient-canvas">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -97,7 +97,7 @@ const ThoughtGraph: React.FC = () => {
         nodeTypes={nodeTypes}
         fitView
         attributionPosition="bottom-left"
-        className="bg-transparent"
+        className="w-full h-full bg-transparent"
         defaultEdgeOptions={{
           type: 'smoothstep',
           style: { stroke: 'hsl(var(--connection))', strokeWidth: 2 },
