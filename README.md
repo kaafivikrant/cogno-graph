@@ -1,73 +1,95 @@
-# Welcome to your Lovable project
+# 🧠 Cogno Graph
 
-## Project info
+Welcome to **Cogno Graph** – a visual thought-mapping tool to organize, connect, and grow your ideas!
 
-**URL**: https://lovable.dev/projects/23047c03-158d-4316-99d7-4b3ee5dfb0b6
+---
 
-## How can I edit this code?
+## 🚀 About the Project
 
-There are several ways of editing your application.
+Cogno Graph is a modern, interactive mind-mapping application built with React, TypeScript, and Tailwind CSS. It empowers you to:
 
-**Use Lovable**
+- **Create** nodes for your thoughts, notes, or ideas.
+- **Connect** them visually to map relationships and flows.
+- **Edit** and **delete** nodes and connections with ease.
+- **Persist** your work locally in your browser – your ideas are always saved!
+- **Enjoy** a beautiful, responsive, and intuitive UI.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/23047c03-158d-4316-99d7-4b3ee5dfb0b6) and start prompting.
+Whether you're brainstorming, planning, or studying, Cogno Graph helps you see the big picture and the details, all at once.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## ✨ Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- 📝 **Rich Node Editing:** Double-click to edit any thought node.
+- ➕ **Quick Add:** Add new nodes with a single click.
+- 🔗 **Easy Connections:** Drag to connect thoughts and visualize relationships.
+- ❌ **Delete Connections:** Click on any connection to remove it.
+- 💾 **Auto-Save:** All your nodes and connections are saved in your browser.
+- 🎨 **Modern UI:** Built with shadcn-ui and Tailwind CSS for a delightful experience.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠️ Tech Stack
+
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [@xyflow/react (React Flow)](https://reactflow.dev/)
+- [shadcn-ui](https://ui.shadcn.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+---
+
+## 🏁 Getting Started
+
+### 1. Clone the Repository
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
+cd cogno-graph
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 2. Install Dependencies
 
-# Step 3: Install the necessary dependencies.
-npm i
+```sh
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### 3. Start the Development Server
+
+```sh
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🌐 Live Demo
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Try it instantly: [Lovable Project Link](https://lovable.dev/projects/23047c03-158d-4316-99d7-4b3ee5dfb0b6)
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 📦 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Deploy your project in seconds with [Lovable](https://lovable.dev/):
 
-## How can I deploy this project?
+- Click **Share → Publish** in the Lovable dashboard.
+- Or connect your custom domain in Project > Settings > Domains.
 
-Simply open [Lovable](https://lovable.dev/projects/23047c03-158d-4316-99d7-4b3ee5dfb0b6) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 🤝 Contributing
 
-Yes, you can!
+Contributions are welcome! Feel free to fork the repo and submit pull requests.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📄 License
+
+MIT
+
+---
+
+> **Cogno Graph** – Map your mind. Connect your thoughts. Unlock your creativity.
